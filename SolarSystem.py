@@ -23,7 +23,7 @@ JUPITER_COLOR = (148, 107, 69)
 
 AU = 149.6e6 * 1000
 
-slider = Slider(WIN, initial=1, min=1, max=6, step=1, x=50, y=HEIGHT-50, width=70, height=30, handleColour=(255, 255, 255))
+slider = Slider(WIN, initial=1, min=1, max=6, step=1, x=50, y=HEIGHT-100, width=70, height=30, handleColour=(255, 255, 255))
     
 def main():
     run = True
@@ -67,8 +67,10 @@ def main():
         time_text_rect = time_text.get_rect(center=(WIDTH/2, 30))
         
         time_scale = FONT.render(f"1 second = {round(slider.getValue()*60)} days", 1, WHITE)
+        time_scale_rect = time_scale.get_rect(center=(WIDTH/2, 130))
+
         WIN.blit(time_text, time_text_rect)
-        WIN.blit(time_scale, (WIDTH-140,HEIGHT-100))
+        WIN.blit(time_scale, time_scale_rect)
         
         mercury_dist = FONT.render("Mercury is: " + f"{round(mercury.distance_to_sun/AU, 2)} AU away from the sun", 1, WHITE)
         mercury_text = "Mercury is: " + f"{round(mercury.distance_to_sun/AU, 2)} AU away from the sun"
