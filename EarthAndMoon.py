@@ -27,7 +27,7 @@ ORANGE = (255,69,0)
 
 AU = 149.6e6 * 1000
 
-slider = Slider(WIN, initial=1, min=1, max=6, step=1, x=50, y=HEIGHT-50, width=70, height=30, handleColour=(255, 255, 255))
+slider = Slider(WIN, initial=1, min=1, max=6, step=1, x=50, y=HEIGHT-100, width=70, height=30, handleColour=(255, 255, 255))
     
 def main():
     run = True
@@ -42,7 +42,7 @@ def main():
     moon = CelestialBody.Planet("Moon", 0.002569 * AU, 0, 1.16138016662, DARK_GREY, 7.34767309 * 10 ** 22, WIN)
     moon.y_vel = -1.022 * 1000
     moon.SCALE = 250000/AU
-    moon.limit = 1000000
+    moon.limit = 100000000
 
 
 
@@ -58,9 +58,9 @@ def main():
         time_text = FONT.render(f"{round(time/365,1)} years have passed", 1, WHITE)
         time_text_rect = time_text.get_rect(center=(WIDTH/2, 30))
         
-        time_scale = FONT.render(f"1 second = {round(slider.getValue()*10)} days", 1, WHITE)
+        time_scale = FONT.render(f"1 second = {round(slider.getValue()*60)} days", 1, WHITE)
         WIN.blit(time_text, time_text_rect)
-        WIN.blit(time_scale, (WIDTH-140,HEIGHT-100))
+        WIN.blit(time_scale, (WIDTH-140,HEIGHT-150))
         
         for event in events:
             if event.type == pygame.QUIT:
